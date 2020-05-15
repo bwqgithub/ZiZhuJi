@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>自助机</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="APP">
+        <el-button type="primary" @click="showDevTools();">打开DevTools</el-button>
+        <el-button type="primary" @click="opencmd();">打开CMD</el-button>
+        <h1>字体测试</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        new Vue({
+            el: '#APP',
+            data() {
+                return {
+                }
+            },
+            methods: {
+                showDevTools() {
+                    cefCustomObject.showDevTools();
+                },
+                opencmd() {
+                    cefCustomObject.opencmd();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
