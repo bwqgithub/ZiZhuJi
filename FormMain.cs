@@ -34,7 +34,7 @@ namespace ZiZhuJi
         public void InitializeChromium()
         {
             CefSettings settings = new CefSettings();
-            String page = string.Format(@"{0}\www\index.html", Application.StartupPath);
+            string page = string.Format(@"{0}\www\index.html", Application.StartupPath);
             if (!File.Exists(page))
             {
                 MessageBox.Show("Error The html file doesn't exists : " + page);
@@ -52,10 +52,30 @@ namespace ZiZhuJi
 
         }
 
-        public void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        public void FormMain_Closing(object sender, FormClosingEventArgs e)
         {
             // TODO
             Cef.Shutdown();
+        }
+
+        public void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F12)
+            {
+                CefCustomObject cefCustomObject = new CefCustomObject(chromeBrowser, this);
+                cefCustomObject.showDevTools();
+
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F12)
+            {
+                CefCustomObject cefCustomObject = new CefCustomObject(chromeBrowser, this);
+                cefCustomObject.showDevTools();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

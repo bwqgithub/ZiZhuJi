@@ -15,7 +15,20 @@
     <div id="APP">
         <el-button type="primary" @click="showDevTools();">打开DevTools</el-button>
         <el-button type="primary" @click="opencmd();">打开CMD</el-button>
-        <h1>字体测试</h1>
+        <br />
+        <el-form :inline="true" class="demo-form-inline">
+            <el-form-item label="URL">
+                <el-input placeholder="请输入内容" v-model="linkInput" @enter="routerHref">
+                    <template slot="prepend">
+                        http://
+                    </template>
+                </el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="routerHref">跳转</el-button>
+            </el-form-item>
+        </el-form>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
@@ -26,6 +39,7 @@
             el: '#APP',
             data() {
                 return {
+                    linkInput: 'www.baidu.com'
                 }
             },
             methods: {
@@ -34,6 +48,9 @@
                 },
                 opencmd() {
                     cefCustomObject.opencmd();
+                },
+                routerHref() {
+                    window.location.href = 'http://' + this.linkInput;
                 }
             }
         })
