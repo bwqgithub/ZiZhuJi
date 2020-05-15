@@ -39,7 +39,7 @@
             el: '#APP',
             data() {
                 return {
-                    linkInput: 'www.baidu.com'
+                    linkInput: 'localhost:5001/weatherforecast'
                 }
             },
             methods: {
@@ -50,7 +50,7 @@
                     cefCustomObject.opencmd();
                 },
                 routerHref() {
-                    window.location.href = 'http://' + this.linkInput;
+                    window.location.href = 'https://' + this.linkInput;
                 }
             }
         })
