@@ -34,5 +34,12 @@ namespace ZiZhuJi
             ProcessStartInfo start = new ProcessStartInfo("cmd.exe", "/c pause");
             Process.Start(start);
         }
+
+        public void loadPage(string url)
+        {
+            _instanceBrowser.Load(url);
+            _instanceBrowser.Dock = DockStyle.Fill;
+            _instanceMainForm.Controls.Add(_instanceBrowser);
+        }
     }
 }

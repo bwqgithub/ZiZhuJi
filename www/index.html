@@ -27,6 +27,7 @@
             <el-form-item>
                 <el-button type="primary" @click="routerHref">跳转</el-button>
             </el-form-item>
+            
         </el-form>
         
     </div>
@@ -39,7 +40,8 @@
             el: '#APP',
             data() {
                 return {
-                    linkInput: 'localhost:5001/weatherforecast'
+                    //linkInput: 'localhost:5001/weatherforecast'
+                    linkInput: '192.168.0.122:8080'
                 }
             },
             methods: {

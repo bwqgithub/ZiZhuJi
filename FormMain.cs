@@ -54,7 +54,6 @@ namespace ZiZhuJi
 
         public void FormMain_Closing(object sender, FormClosingEventArgs e)
         {
-            // TODO
             Cef.Shutdown();
         }
 
@@ -68,14 +67,18 @@ namespace ZiZhuJi
             }
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        private void AddressTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (keyData == Keys.F12)
+
+        }
+
+        private void AddressTextBox_keyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
                 CefCustomObject cefCustomObject = new CefCustomObject(chromeBrowser, this);
-                cefCustomObject.showDevTools();
+                cefCustomObject.loadPage(AddressTextBox.Text);
             }
-            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
